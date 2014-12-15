@@ -13,8 +13,10 @@ namespace MoonSharp.Interpreter.Diagnostics
 
 		public void DumpTree(IParseTree tree, string filename)
 		{
+#if !PORTABLENET4
 			DumpTree(true, tree, 0);
 			File.WriteAllText(filename, m_TreeDump.ToString());
+#endif
 		}
 
 		public void WalkTreeForWaste(IParseTree tree)

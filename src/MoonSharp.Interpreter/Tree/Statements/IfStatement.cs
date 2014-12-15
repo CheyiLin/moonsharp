@@ -29,8 +29,13 @@ namespace MoonSharp.Interpreter.Tree.Statements
 		public IfStatement(LuaParser.Stat_ifblockContext context, ScriptLoadingContext lcontext)
 			: base(context,lcontext)
 		{
+#if NET45
+			int ecount = context.exp().Count;
+			int bcount = context.block().Count;
+#else
 			int ecount = context.exp().Length;
 			int bcount = context.block().Length;
+#endif
 
 			for(int i = 0; i < ecount; i++)
 			{

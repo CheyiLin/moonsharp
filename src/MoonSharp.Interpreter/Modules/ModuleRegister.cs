@@ -61,9 +61,17 @@ namespace MoonSharp.Interpreter
 		{
 			Table table = CreateModuleNamespace(gtable, t);
 
-			foreach (MethodInfo mi in t.GetMethods(BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic))
+#if PORTABLENET4
+			BindingFlags method_bflags = BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+			BindingFlags field_bflags = BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+#else
+			BindingFlags method_bflags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
+			BindingFlags field_bflags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.Public | BindingFlags.NonPublic;
+#endif
+
+			foreach (MethodInfo mi in t.GetMethods(method_bflags))
 			{
-				if (mi.GetCustomAttributes(typeof(MoonSharpMethodAttribute), false).Length > 0)
+				if (mi.GetCustomAttributes(typeof(MoonSharpMethodAttribute), false).ToArray().Length > 0)
 				{
 					MoonSharpMethodAttribute attr = (MoonSharpMethodAttribute)mi.GetCustomAttributes(typeof(MoonSharpMethodAttribute), false).First();
 
@@ -83,14 +91,14 @@ namespace MoonSharp.Interpreter
 				}
 			}
 
-			foreach (FieldInfo fi in t.GetFields(BindingFlags.Static | BindingFlags.GetField | BindingFlags.Public | BindingFlags.NonPublic).Where(_mi => _mi.GetCustomAttributes(typeof(MoonSharpMethodAttribute), false).Length > 0))
+			foreach (FieldInfo fi in t.GetFields(field_bflags).Where(_mi => _mi.GetCustomAttributes(typeof(MoonSharpMethodAttribute), false).ToArray().Length > 0))
 			{
 				MoonSharpMethodAttribute attr = (MoonSharpMethodAttribute)fi.GetCustomAttributes(typeof(MoonSharpMethodAttribute), false).First();
 				string name = (!string.IsNullOrEmpty(attr.Name)) ? attr.Name : fi.Name;
 
 				RegisterScriptField(fi, null, table, t, name);
 			}
-			foreach (FieldInfo fi in t.GetFields(BindingFlags.Static | BindingFlags.GetField | BindingFlags.Public | BindingFlags.NonPublic).Where(_mi => _mi.GetCustomAttributes(typeof(MoonSharpConstantAttribute), false).Length > 0))
+			foreach (FieldInfo fi in t.GetFields(field_bflags).Where(_mi => _mi.GetCustomAttributes(typeof(MoonSharpConstantAttribute), false).ToArray().Length > 0))
 			{
 				MoonSharpConstantAttribute attr = (MoonSharpConstantAttribute)fi.GetCustomAttributes(typeof(MoonSharpConstantAttribute), false).First();
 				string name = (!string.IsNullOrEmpty(attr.Name)) ? attr.Name : fi.Name;

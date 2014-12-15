@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !PORTABLENET4
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -138,3 +139,4 @@ namespace MoonSharp.Interpreter.CoreLib.IO
 
 	}
 }
+#endif

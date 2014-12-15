@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MoonSharp.Interpreter.RuntimeAbstraction
 {
+#if !PORTABLENET4
 	class Clr2Platform : Platform
 	{
 		public override string Name
@@ -21,6 +22,8 @@ namespace MoonSharp.Interpreter.RuntimeAbstraction
 		{
 			return module;
 		}
-
 	}
+#endif
+
+
 }

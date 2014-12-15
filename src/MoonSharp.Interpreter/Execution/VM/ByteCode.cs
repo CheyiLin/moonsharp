@@ -67,6 +67,7 @@ namespace MoonSharp.Interpreter.Execution.VM
 
 		public void Dump(string file)
 		{
+#if !PORTABLENET4
 			StringBuilder sb = new StringBuilder();
 
 			for (int i = 0; i < Code.Count; i++)
@@ -78,6 +79,7 @@ namespace MoonSharp.Interpreter.Execution.VM
 			}
 
 			File.WriteAllText(file, sb.ToString());
+#endif
 		}
 
 		public int GetJumpPointForNextInstruction()

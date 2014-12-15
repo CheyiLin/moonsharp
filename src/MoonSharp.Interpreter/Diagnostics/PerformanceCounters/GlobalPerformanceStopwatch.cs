@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using MoonSharp.Interpreter;
 
 namespace MoonSharp.Interpreter.Diagnostics.PerformanceCounters
 {

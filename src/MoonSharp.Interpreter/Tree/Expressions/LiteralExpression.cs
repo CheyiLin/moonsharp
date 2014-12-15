@@ -67,7 +67,7 @@ namespace MoonSharp.Interpreter.Tree.Expressions
 		{
 			str = str.Substring(1, str.Length - 2); // removes "/'
 
-			if (!str.Contains('\\'))
+			if (!str.Contains("\\"))
 				return str;
 
 			StringBuilder sb = new StringBuilder();
@@ -120,7 +120,7 @@ namespace MoonSharp.Interpreter.Tree.Expressions
 							if (c == '}')
 							{
 								int i = int.Parse(val, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
-								sb.Append(char.ConvertFromUtf32(i));
+								sb.Append(ConvertFromUtf32(i));
 								unicode_state = 0;
 								val = string.Empty;
 								escape = false;
@@ -142,7 +142,7 @@ namespace MoonSharp.Interpreter.Tree.Expressions
 								if (val.Length == 2)
 								{
 									int i = int.Parse(val, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
-									sb.Append(char.ConvertFromUtf32(i));
+									sb.Append(ConvertFromUtf32(i));
 									zmode = false; 
 									escape = false;
 								}
@@ -166,7 +166,7 @@ namespace MoonSharp.Interpreter.Tree.Expressions
 								if (i > 255) 
 									throw new SyntaxErrorException("decimal escape too large near '\\{0}'", val);
 
-								sb.Append(char.ConvertFromUtf32(i));
+								sb.Append(ConvertFromUtf32(i));
 
 								zmode = false;
 								escape = false;
@@ -199,7 +199,7 @@ namespace MoonSharp.Interpreter.Tree.Expressions
 			if (escape && !hex && val.Length > 0)
 			{
 				int i = int.Parse(val, CultureInfo.InvariantCulture);
-				sb.Append(char.ConvertFromUtf32(i));
+				sb.Append(ConvertFromUtf32(i));
 				escape = false;
 			}
 
@@ -209,6 +209,15 @@ namespace MoonSharp.Interpreter.Tree.Expressions
 			}
 
 			return sb.ToString();
+		}
+
+		private string ConvertFromUtf32(int i)
+		{
+#if PORTABLENET4
+			return ((char)i).ToString();
+#else
+			return char.ConvertFromUtf32(i);
+#endif
 		}
 
 		private bool IsHexDigit(char c)

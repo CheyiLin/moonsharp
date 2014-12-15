@@ -56,8 +56,10 @@ namespace MoonSharp.Interpreter.CoreLib
 
 			string mode = opt.CastToString();
 
+#if !PORTABLENET4
 			if (mode == null || mode == "collect" || mode == "restart")
 				GC.Collect(2, GCCollectionMode.Forced);
+#endif
 
 			return DynValue.Nil;
 		}

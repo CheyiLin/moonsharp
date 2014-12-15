@@ -23,9 +23,10 @@ namespace MoonSharp.Interpreter.CoreLib
 				throw new InternalErrorException("'package' global variable was found and it is not a table");
 			}
 
+#if !PORTABLENET4
 			string cfg = System.IO.Path.DirectorySeparatorChar + "\n;\n?\n!\n-\n";
-
 			package.Table.Set("config", DynValue.NewString(cfg));
+#endif
 		}
 
 

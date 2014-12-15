@@ -27,7 +27,11 @@ namespace MoonSharp.Interpreter.Tree.Statements
 			m_Start = NodeFactory.CreateExpression(exps[0], lcontext);
 			m_End = NodeFactory.CreateExpression(exps[1], lcontext);
 
+#if NET45
+			if (exps.Count > 2)
+#else
 			if (exps.Length > 2)
+#endif 
 				m_Step = NodeFactory.CreateExpression(exps[2], lcontext);
 			else
 				m_Step = new LiteralExpression(context, lcontext, DynValue.NewNumber(1));

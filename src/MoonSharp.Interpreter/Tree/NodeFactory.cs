@@ -211,7 +211,11 @@ namespace MoonSharp.Interpreter.Tree
 				else
 					indexExp = new LiteralExpression(suff_NAME, lcontext, DynValue.NewString(suff_NAME.GetText()));
 
+#if NET45
+				if (nameAndArgs != null && nameAndArgs.Count > 0)
+#else
 				if (nameAndArgs != null && nameAndArgs.Length > 0)
+#endif
 				{
 					varExp = new FunctionCallChainExpression(suffix, lcontext, varExp, nameAndArgs);
 				}

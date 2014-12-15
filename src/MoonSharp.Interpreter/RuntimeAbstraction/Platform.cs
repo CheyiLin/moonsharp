@@ -12,6 +12,7 @@ namespace MoonSharp.Interpreter.RuntimeAbstraction
 
 		static Platform()
 		{
+#if !PORTABLENET4
 			bool onUnity = AppDomain.CurrentDomain
 				.GetAssemblies()
 				.SelectMany(a => a.GetTypes())
@@ -55,6 +56,9 @@ namespace MoonSharp.Interpreter.RuntimeAbstraction
 
 			System.Diagnostics.Debug.WriteLine(string.Format("MoonSharp {0} running over {1}.",
 				Script.VERSION, s_Current.Name));
+#else
+			s_Current = new PortableFrameworkPlatform();
+#endif
 		}
 
 

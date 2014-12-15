@@ -7,6 +7,8 @@ using MoonSharp.Interpreter.RuntimeAbstraction;
 
 namespace MoonSharp.Interpreter.Loaders
 {
+#if !PORTABLENET4
+
 	public class ClassicLuaScriptLoader : IScriptLoader
 	{
 		string[] m_EnvironmentPaths = null;
@@ -80,4 +82,50 @@ namespace MoonSharp.Interpreter.Loaders
 			return File.Exists(file);
 		}
 	}
+
+
+
+#else
+
+	public class ClassicLuaScriptLoader : IScriptLoader
+	{
+		public ClassicLuaScriptLoader()
+		{
+		}
+
+		public virtual string LoadFile(string file, Table globalContext)
+		{
+			throw new NotSupportedException("File operations are not supported in portable class library version of MoonSharp.");
+		}
+
+		public virtual string ResolveFileName(string filename, Table globalContext)
+		{
+			throw new NotSupportedException("File operations are not supported in portable class library version of MoonSharp.");
+		}
+
+		public string[] ModulePaths { get; set; }
+
+		public virtual string ResolveModuleName(string modname, Table globalContext)
+		{
+			throw new NotSupportedException("File operations are not supported in portable class library version of MoonSharp.");
+		}
+
+		public virtual string[] UnpackStringPaths(string str)
+		{
+			throw new NotSupportedException("File operations are not supported in portable class library version of MoonSharp.");
+		}
+
+		protected virtual string ResolveModuleName(string modname, string[] paths)
+		{
+			throw new NotSupportedException("File operations are not supported in portable class library version of MoonSharp.");
+		}
+
+		protected virtual bool FileExists(string file)
+		{
+			throw new NotSupportedException("File operations are not supported in portable class library version of MoonSharp.");
+		}
+	}
+
+
+#endif
 }

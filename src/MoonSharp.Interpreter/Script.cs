@@ -45,8 +45,14 @@ namespace MoonSharp.Interpreter
 			DefaultOptions = new ScriptOptions()
 			{
 				ScriptLoader = new ClassicLuaScriptLoader(),
+
+#if PORTABLENET4
+				DebugPrint = s => { },
+				DebugInput = () => { throw new NotSupportedException(); },
+#else
 				DebugPrint = s => { Console.WriteLine(s); },
 				DebugInput = () => { return Console.ReadLine(); },
+#endif
 			};
 		}
 
@@ -171,22 +177,6 @@ namespace MoonSharp.Interpreter
 			return MakeClosure(address);
 		}
 
-		/// <summary>
-		/// Loads a string containing a Lua/MoonSharp script.
-		/// </summary>
-		/// <param name="filename">The code.</param>
-		/// <param name="globalContext">The global table to bind to this chunk.</param>
-		/// <param name="friendlyFilename">The filename to be used in error messages.</param>
-		/// <returns>
-		/// A DynValue containing a function which will execute the loaded code.
-		/// </returns>
-		public DynValue LoadFile(string filename, Table globalContext = null, string friendlyFilename = null)
-		{
-			filename = Options.ScriptLoader.ResolveFileName(filename, globalContext ?? m_GlobalTable);
-
-			return LoadString(Options.ScriptLoader.LoadFile(filename, globalContext ?? m_GlobalTable), globalContext, friendlyFilename ?? filename);
-		}
-
 
 		/// <summary>
 		/// Loads and executes a string containing a Lua/MoonSharp script.
@@ -203,6 +193,21 @@ namespace MoonSharp.Interpreter
 		}
 
 		/// <summary>
+		/// Loads a string containing a Lua/MoonSharp script.
+		/// </summary>
+		/// <param name="filename">The code.</param>
+		/// <param name="globalContext">The global table to bind to this chunk.</param>
+		/// <param name="friendlyFilename">The filename to be used in error messages.</param>
+		/// <returns>
+		/// A DynValue containing a function which will execute the loaded code.
+		/// </returns>
+		public DynValue LoadFile(string filename, Table globalContext = null, string friendlyFilename = null)
+		{
+			filename = Options.ScriptLoader.ResolveFileName(filename, globalContext ?? m_GlobalTable);
+			return LoadString(Options.ScriptLoader.LoadFile(filename, globalContext ?? m_GlobalTable), globalContext, friendlyFilename ?? filename);
+		}
+
+		/// <summary>
 		/// Loads and executes a file containing a Lua/MoonSharp script.
 		/// </summary>
 		/// <param name="filename">The filename.</param>
@@ -215,7 +220,6 @@ namespace MoonSharp.Interpreter
 			DynValue func = LoadFile(filename, globalContext);
 			return Call(func);
 		}
-
 
 		/// <summary>
 		/// Runs the specified file with all possible defaults for quick experimenting.

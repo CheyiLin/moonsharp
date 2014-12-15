@@ -10,6 +10,8 @@ namespace MoonSharp.Interpreter.CoreLib
 	[MoonSharpModule(Namespace = "io")]
 	public class IoModule
 	{
+#if !PORTABLENET4
+
 		enum DefaultFiles
 		{
 			In,
@@ -279,7 +281,7 @@ namespace MoonSharp.Interpreter.CoreLib
 			return new FileUserData(filename, encoding, mode);
 		}
 
-
+#endif
 
 	}
 

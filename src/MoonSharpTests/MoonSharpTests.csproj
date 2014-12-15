@@ -82,13 +82,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MoonSharp.Interpreter.Tests\MoonSharp.Interpreter.Tests.csproj">
+    <ProjectReference Include="..\Tests\MoonSharp.Interpreter.Tests\MoonSharp.Interpreter.Tests.net35.csproj">
       <Project>{4ad350e6-e296-43ef-9fea-cb70358467e4}</Project>
-      <Name>MoonSharp.Interpreter.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MoonSharp.Interpreter\MoonSharp.Interpreter.csproj">
-      <Project>{91ea9b9d-fe03-4273-bdaf-8ad42ede1e59}</Project>
-      <Name>MoonSharp.Interpreter</Name>
+      <Name>MoonSharp.Interpreter.Tests.net35</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

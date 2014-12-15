@@ -27,7 +27,12 @@ namespace MoonSharp.Interpreter.Interop
 
 			if (AccessMode != InteropAccessMode.HideMembers)
 			{
-				foreach (MethodInfo mi in type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Static))
+#if PORTABLENET4
+				BindingFlags bindingflags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
+#else
+				BindingFlags bindingflags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Static;
+#endif
+				foreach (MethodInfo mi in type.GetMethods(bindingflags))
 				{
 					if (CheckVisibility(mi.GetCustomAttributes(true), mi.IsPublic))
 					{

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLENET4
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,11 +12,16 @@ namespace MoonSharp.Interpreter.CoreLib.IO
 	{
 		public FileUserData(string filename, Encoding encoding, string mode)
 		{
-			Stream stream = new FileStream(filename, ParseFileMode(mode), ParseFileAccess(mode), FileShare.ReadWrite | FileShare.Delete);
+			Stream stream = CreateStream(filename, encoding, mode);
 			StreamReader reader = (stream.CanRead) ? new StreamReader(stream, encoding) : null;
 			StreamWriter writer = (stream.CanWrite) ? new StreamWriter(stream, encoding) : null;
 
 			base.Initialize(stream, reader, writer);
+		}
+
+		private Stream CreateStream(string filename, Encoding encoding, string mode)
+		{
+			return new FileStream(filename, ParseFileMode(mode), ParseFileAccess(mode), FileShare.ReadWrite | FileShare.Delete);
 		}
 
 		private FileAccess ParseFileAccess(string mode)
@@ -48,7 +55,8 @@ namespace MoonSharp.Interpreter.CoreLib.IO
 			else
 				return FileMode.Append;
 		}
-
-
 	}
 }
+
+#endif
+

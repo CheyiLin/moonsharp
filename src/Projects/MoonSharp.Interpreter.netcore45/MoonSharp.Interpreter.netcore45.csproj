@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Antlr4.4.3.0\build\Antlr4.props" Condition="Exists('..\..\packages\Antlr4.4.3.0\build\Antlr4.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BA5C09D-A114-42FC-B056-E82CEA40FB12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MoonSharp.Interpreter.netcore45</RootNamespace>
+    <AssemblyName>MoonSharp.Interpreter.netcore45</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>b5e574fe</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_APP;NET4;PORTABLENET4;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Antlr4 Include="Grammar\Lua.g4">
+      <Generator>MSBuild:Compile</Generator>
+      <CustomToolNamespace>MoonSharp.Interpreter.Grammar</CustomToolNamespace>
+    </Antlr4>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\CoroutineModule.cs">
+      <Link>CoroutineModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\BasicModule.cs">
+      <Link>BasicModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\DebugModule.cs">
+      <Link>DebugModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\DynamicModule.cs">
+      <Link>DynamicModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\ErrorHandlingModule.cs">
+      <Link>ErrorHandlingModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\IO\BinaryEncoding.cs">
+      <Link>BinaryEncoding.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\IO\FileUserData.cs">
+      <Link>FileUserData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\IoModule.cs">
+      <Link>IoModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\IO\FileUserDataBase.cs">
+      <Link>FileUserDataBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\IO\StdioFileUserData.cs">
+      <Link>StdioFileUserData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\IO\StreamFileUserDataBase.cs">
+      <Link>StreamFileUserDataBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\LoadModule.cs">
+      <Link>LoadModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\Bit32Module.cs">
+      <Link>Bit32Module.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\MathModule.cs">
+      <Link>MathModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\MetaTableModule.cs">
+      <Link>MetaTableModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\OsSystemModule.cs">
+      <Link>OsSystemModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\OsTimeModule.cs">
+      <Link>OsTimeModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\StringLib\CaptureInfo.cs">
+      <SubType>Code</SubType>
+      <Link>CaptureInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\StringLib\KopiLua_StrLib.cs">
+      <Link>KopiLua_StrLib.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\ScriptFunctionDelegate.cs">
+      <Link>ScriptFunctionDelegate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\TypeValidationFlags.cs">
+      <Link>TypeValidationFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Errors\DynamicExpressionException.cs">
+      <Link>DynamicExpressionException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\DynamicExpression.cs">
+      <Link>DynamicExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\CallStackItemFlags.cs">
+      <Link>CallStackItemFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\AnonWrapper.cs">
+      <Link>AnonWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LuaStateInterop\CharPtr.cs">
+      <Link>CharPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LuaStateInterop\LuaBase.cs">
+      <Link>LuaBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\StringLib\MatchState.cs">
+      <SubType>Code</SubType>
+      <Link>MatchState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\StringLib\PatternMatching.cs">
+      <SubType>Code</SubType>
+      <Link>PatternMatching.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\StringLib\StringRange.cs">
+      <Link>StringRange.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LuaStateInterop\Tools.cs">
+      <Link>Tools.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\StringModule.cs">
+      <Link>StringModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\TableIteratorsModule.cs">
+      <Link>TableIteratorsModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\CoreLib\TableModule.cs">
+      <Link>TableModule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataStructs\Extension_Methods.cs">
+      <Link>Extension_Methods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataStructs\FastStackDynamic.cs">
+      <Link>FastStackDynamic.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataStructs\ITrackableReference.cs">
+      <Link>ITrackableReference.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataStructs\LinkedListIndex.cs">
+      <Link>LinkedListIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataStructs\Slice.cs">
+      <Link>Slice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\Coroutine.cs">
+      <Link>Coroutine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\IScriptPrivateResource.cs">
+      <Link>IScriptPrivateResource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\RefIdObject.cs">
+      <Link>RefIdObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\TailCallData.cs">
+      <Link>TailCallData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\UserData.cs">
+      <SubType>Code</SubType>
+      <Link>UserData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\WellKnownSymbols.cs">
+      <Link>WellKnownSymbols.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\YieldRequest.cs">
+      <Link>YieldRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\DebuggerAction.cs">
+      <Link>DebuggerAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\IDebugger.cs">
+      <Link>IDebugger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\SourceCodeType.cs">
+      <Link>SourceCodeType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\SourceRef.cs">
+      <Link>SourceRef.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\WatchItem.cs">
+      <Link>WatchItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\WatchType.cs">
+      <Link>WatchType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceCounters\DummyPerformanceStopwatch.cs">
+      <Link>DummyPerformanceStopwatch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceCounters\IPerformanceStopwatch.cs">
+      <Link>IPerformanceStopwatch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceCounter.cs">
+      <Link>PerformanceCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceCounters\GlobalPerformanceStopwatch.cs">
+      <Link>GlobalPerformanceStopwatch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceCounterType.cs">
+      <Link>PerformanceCounterType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceStatistics.cs">
+      <Link>PerformanceStatistics.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceResult.cs">
+      <Link>PerformanceResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\PerformanceCounters\PerformanceStopwatch.cs">
+      <Link>PerformanceStopwatch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Errors\ScriptRuntimeException.cs">
+      <SubType>Code</SubType>
+      <Link>ScriptRuntimeException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Errors\InternalErrorException.cs">
+      <Link>InternalErrorException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Diagnostics\AstDump.cs">
+      <Link>AstDump.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Errors\InterpreterException.cs">
+      <Link>InterpreterException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Errors\SyntaxErrorException.cs">
+      <Link>SyntaxErrorException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\CallbackArguments.cs">
+      <Link>CallbackArguments.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\Closure.cs">
+      <Link>Closure.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\CallbackFunction.cs">
+      <Link>CallbackFunction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\DynValue.cs">
+      <SubType>Code</SubType>
+      <Link>DynValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\TablePair.cs">
+      <Link>TablePair.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\FileLoadRequestedEventArgs.cs">
+      <Link>FileLoadRequestedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\ScriptExecutionContext.cs">
+      <SubType>Code</SubType>
+      <Link>ScriptExecutionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Debugging\SourceCode.cs">
+      <Link>SourceCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\CoroutineState.cs">
+      <Link>CoroutineState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\ExecutionState.cs">
+      <Link>ExecutionState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\DebugContext.cs">
+      <Link>DebugContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_Coroutines.cs">
+      <Link>Processor_Coroutines.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_Errors.cs">
+      <Link>Processor_Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interface\IteratorHelper.cs">
+      <Link>IteratorHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\ConversionHelper.cs">
+      <Link>ConversionHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\EnumerableWrapper.cs">
+      <Link>EnumerableWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LinqHelpers.cs">
+      <Link>LinqHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LuaStateInterop\LuaBase_CLib.cs">
+      <Link>LuaBase_CLib.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LuaStateInterop\LuaLBuffer.cs">
+      <Link>LuaLBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\LuaStateInterop\LuaState.cs">
+      <Link>LuaState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\MoonSharpUserDataAttribute.cs">
+      <Link>MoonSharpUserDataAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\MoonSharpVisibleAttribute.cs">
+      <Link>MoonSharpVisibleAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\Portable.cs">
+      <Link>Portable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\UserDataDelegateDescriptor.cs">
+      <Link>UserDataDelegateDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\UserDataDescriptor.cs">
+      <Link>UserDataDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\InteropAccessMode.cs">
+      <Link>InteropAccessMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\UserDataMethodDescriptor.cs">
+      <Link>UserDataMethodDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Interop\UserDataPropertyDescriptor.cs">
+      <SubType>Code</SubType>
+      <Link>UserDataPropertyDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Loaders\ClassicLuaScriptLoader.cs">
+      <Link>ClassicLuaScriptLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Loaders\IScriptLoader.cs">
+      <Link>IScriptLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\ClosureContext.cs">
+      <Link>ClosureContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\LoopTracker.cs">
+      <Link>LoopTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\IClosureBuilder.cs">
+      <Link>IClosureBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\SymbolRefType.cs">
+      <Link>SymbolRefType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\SymbolRef.cs">
+      <Link>SymbolRef.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\BuildTimeScope.cs">
+      <Link>BuildTimeScope.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\BuildTimeScopeBlock.cs">
+      <Link>BuildTimeScopeBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\BuildTimeScopeFrame.cs">
+      <Link>BuildTimeScopeFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\RuntimeScopeBlock.cs">
+      <Link>RuntimeScopeBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\Scopes\RuntimeScopeFrame.cs">
+      <Link>RuntimeScopeFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\ScriptLoadingContext.cs">
+      <Link>ScriptLoadingContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\DataType.cs">
+      <Link>DataType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Modules\MoonSharpConstantAttribute.cs">
+      <Link>MoonSharpConstantAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\NetCoreReflectionHelpers.cs">
+      <Link>NetCoreReflectionHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\Clr2Platform.cs">
+      <Link>Clr2Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\Clr4Platform.cs">
+      <Link>Clr4Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\Platform.cs">
+      <SubType>Code</SubType>
+      <Link>Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\MonoPlatform.cs">
+      <Link>MonoPlatform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\PortableFrameworkPlatform.cs">
+      <Link>PortableFrameworkPlatform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\UnityPlatform.cs">
+      <Link>UnityPlatform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\UnityWebPlatform.cs">
+      <Link>UnityWebPlatform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\RuntimeAbstraction\PlatformImplementations\XamarinAndroidPlatform.cs">
+      <Link>XamarinAndroidPlatform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Script.cs">
+      <Link>Script.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataTypes\Table.cs">
+      <Link>Table.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\ByteCode.cs">
+      <Link>ByteCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\DataStructs\FastStack.cs">
+      <Link>FastStack.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Instruction.cs">
+      <Link>Instruction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\OpCode.cs">
+      <Link>OpCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\CallStackItem.cs">
+      <Link>CallStackItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor.cs">
+      <SubType>Code</SubType>
+      <Link>Processor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_Debugger.cs">
+      <Link>Processor_Debugger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_IExecutionContext.cs">
+      <Link>Processor_IExecutionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_InstructionLoop.cs">
+      <Link>Processor_InstructionLoop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_Scope.cs">
+      <Link>Processor_Scope.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Execution\VM\Processor\Processor_UtilityFunctions.cs">
+      <Link>Processor_UtilityFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Modules\CoreModules.cs">
+      <Link>CoreModules.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Modules\ModuleRegister.cs">
+      <SubType>Code</SubType>
+      <Link>ModuleRegister.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Modules\MoonSharpMethodAttribute.cs">
+      <Link>MoonSharpMethodAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Modules\MoonSharpModuleAttribute.cs">
+      <SubType>Code</SubType>
+      <Link>MoonSharpModuleAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\ScriptOptions.cs">
+      <Link>ScriptOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Antlr_Interface\AntlrErrorListener.cs">
+      <Link>AntlrErrorListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\AdjustmentExpression.cs">
+      <Link>AdjustmentExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\BinaryOperatorExpression.cs">
+      <Link>BinaryOperatorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\DynamicExprExpression.cs">
+      <Link>DynamicExprExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\PowerOperatorExpression.cs">
+      <Link>PowerOperatorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\UnaryOperatorExpression.cs">
+      <Link>UnaryOperatorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\IVariable.cs">
+      <Link>IVariable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\ExprListExpression.cs">
+      <Link>ExprListExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\FunctionDefinitionExpression.cs">
+      <Link>FunctionDefinitionExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\LiteralExpression.cs">
+      <Link>LiteralExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\IndexExpression.cs">
+      <Link>IndexExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\FunctionCall.cs">
+      <Link>FunctionCall.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\FunctionCallChainExpression.cs">
+      <Link>FunctionCallChainExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expression.cs">
+      <Link>Expression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\OperatorExpression.cs">
+      <Link>OperatorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\SymbolRefExpression.cs">
+      <Link>SymbolRefExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Antlr_Interface\Loader_Antlr.cs">
+      <Link>Loader_Antlr.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Loop.cs">
+      <Link>Loop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\NodeBase.cs">
+      <Link>NodeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\NodeFactory.cs">
+      <Link>NodeFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\AssignmentStatement.cs">
+      <Link>AssignmentStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\ChunkStatement.cs">
+      <SubType>Code</SubType>
+      <Link>ChunkStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\CompositeStatement.cs">
+      <Link>CompositeStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\BreakStatement.cs">
+      <Link>BreakStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\ForEachLoopStatement.cs">
+      <Link>ForEachLoopStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\ForLoopStatement.cs">
+      <Link>ForLoopStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\FunctionCallStatement.cs">
+      <Link>FunctionCallStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\FunctionDefinitionStatement.cs">
+      <Link>FunctionDefinitionStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\IfStatement.cs">
+      <Link>IfStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statement.cs">
+      <Link>Statement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\LabelStatement.cs">
+      <Link>LabelStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\NullStatement.cs">
+      <Link>NullStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\RepeatStatement.cs">
+      <Link>RepeatStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\ReturnStatement.cs">
+      <Link>ReturnStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Grammar\LuaGrammar_ExtensionMethods.cs">
+      <Link>LuaGrammar_ExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Expressions\TableConstructor.cs">
+      <Link>TableConstructor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\ScopeBlockStatement.cs">
+      <Link>ScopeBlockStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MoonSharp.Interpreter\Tree\Statements\WhileStatement.cs">
+      <Link>WhileStatement.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime.netcore45">
+      <HintPath>..\..\packages\Antlr4.Runtime.4.3.0\lib\netcore45\Antlr4.Runtime.netcore45.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Antlr4.4.3.0\build\Antlr4.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Antlr4.4.3.0\build\Antlr4.props'))" />
+    <Error Condition="!Exists('..\..\packages\Antlr4.4.3.0\build\Antlr4.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Antlr4.4.3.0\build\Antlr4.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Antlr4.4.3.0\build\Antlr4.targets" Condition="Exists('..\..\packages\Antlr4.4.3.0\build\Antlr4.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

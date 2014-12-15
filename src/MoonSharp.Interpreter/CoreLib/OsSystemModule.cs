@@ -11,6 +11,8 @@ namespace MoonSharp.Interpreter.CoreLib
 	[MoonSharpModule(Namespace = "os")]
 	public class OsSystemModule
 	{
+#if !PORTABLENET4
+
 		[MoonSharpMethod]
 		public static DynValue execute(ScriptExecutionContext executionContext, CallbackArguments args)
 		{
@@ -130,6 +132,6 @@ namespace MoonSharp.Interpreter.CoreLib
 		{
 			return DynValue.NewString(Path.GetTempFileName());
 		}
-
+#endif
 	}
 }
